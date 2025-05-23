@@ -36,6 +36,9 @@ public class GreetingService {
     public Greeting save(Greeting greeting) {
         return greetingRepository.save(greeting);
     }
+    public Greeting saveGreeting(Greeting greeting) {
+        return greetingRepository.save(greeting);
+    }
     public Greeting findById(long id) {
         return greetingRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Greeting not found"));
@@ -50,5 +53,11 @@ public class GreetingService {
         existingGreeting.setMessage(updatedGreeting.getMessage());
 
         return greetingRepository.save(existingGreeting);
+    }
+    public void deleteGreeting(long id) {
+        greetingRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Greeting not found"));
+
+        greetingRepository.deleteById(id); // ✅ Your repository supports deleteById, not delete(object)
     }
    }
