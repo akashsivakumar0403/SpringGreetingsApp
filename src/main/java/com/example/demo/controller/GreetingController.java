@@ -42,5 +42,8 @@ public class GreetingController {
 	    return greetingService.getPersonalizedGreeting(firstName, lastName);
 	}
 
-
+	@PostMapping("/save")
+	public Greeting saveGreeting(@RequestBody Greeting greeting) {
+	    return greetingService.saveGreeting(greeting);
+	}
 }

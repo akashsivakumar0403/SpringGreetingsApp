@@ -33,4 +33,7 @@ public class GreetingService {
 
         return new Greeting(100, message);
     }
+    public Greeting save(Greeting greeting) {
+        return greetingRepository.save(greeting);
+    }
    }
