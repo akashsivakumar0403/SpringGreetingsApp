@@ -36,7 +36,11 @@ public class GreetingController {
 		return new Greeting(4, "Hello from DELETE(via Service)");
 	}
 
-	
+	@GetMapping("/custom")
+	public Greeting getCustomGreeting(@RequestParam(required = false) String firstName,
+	                                  @RequestParam(required = false) String lastName) {
+	    return greetingService.getPersonalizedGreeting(firstName, lastName);
+	}
 
 
 }
