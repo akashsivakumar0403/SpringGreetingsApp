@@ -40,4 +40,7 @@ public class GreetingService {
         return greetingRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Greeting not found"));
     }
+    public List<Greeting> getAllGreetings() {
+        return greetingRepository.findAll();
+    }
    }
