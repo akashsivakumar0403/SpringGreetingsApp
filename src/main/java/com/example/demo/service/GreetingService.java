@@ -43,4 +43,12 @@ public class GreetingService {
     public List<Greeting> getAllGreetings() {
         return greetingRepository.findAll();
     }
+    public Greeting updateGreeting(long id, Greeting updatedGreeting) {
+        Greeting existingGreeting = greetingRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Greeting not found"));
+
+        existingGreeting.setMessage(updatedGreeting.getMessage());
+
+        return greetingRepository.save(existingGreeting);
+    }
    }
