@@ -58,6 +58,6 @@ public class GreetingService {
         greetingRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Greeting not found"));
 
-        greetingRepository.deleteById(id); // ✅ Your repository supports deleteById, not delete(object)
+        greetingRepository.deleteById(id);
     }
    }
